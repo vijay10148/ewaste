@@ -1,0 +1,438 @@
+{% load static %}
+<!DOCTYPE html>
+<html class="no-js h-100" lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Dashboard</title>
+    <meta name="description" content="A high-quality &amp; free Bootstrap admin dashboard template pack that comes with lots of templates and components.">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" id="main-stylesheet" data-version="1.1.0" href="{% static '/styles/shards-dashboards.1.1.0.min.css' %}">
+    <link rel="stylesheet" href="{% static '/styles/extras.1.1.0.min.css' %}">
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+	<style>
+	/*Modal*/
+	h4 {
+	  font-weight: bold;
+	  color: #fff;
+	}
+	.close {
+	  color: #fff;
+	  transform: scale(1.2)
+	}
+	.modal-content {
+	  font-weight: bold;
+	  background: linear-gradient(to bottom right,black,white);
+	}
+	.username, .password {
+	  border: none;
+	  border-radius: 0;
+	  box-shadow: none;
+	  border-bottom: 2px solid #eee;
+	  padding-left: 0;
+	  font-weight: normal;
+	  background: transparent;  
+	}
+	.login {
+	  padding: 6px 20px;
+	  border-radius: 20px;
+	  background: none;
+	  border: 2px solid #FAB87F;
+	  color: #FAB87F;
+	  font-weight: bold;
+	  transition: all .5s;
+	  margin-top: 1em;
+	}
+	.login:hover {
+	  background: #FAB87F;
+	  color: #fff;
+	}
+	</style>
+  </head>
+  <body class="h-100">
+    <div class="container-fluid">
+      <div class="row">
+        <!-- Main Sidebar -->
+        <aside class="main-sidebar col-12 col-md-3 col-lg-2 px-0">
+          <div class="main-navbar">
+            <nav class="navbar align-items-stretch navbar-light bg-white flex-md-nowrap border-bottom p-0">
+              <a class="navbar-brand w-100 mr-0" href="#" style="line-height: 25px;">
+                <div class="d-table m-auto">
+                  <img id="main-logo" class="d-inline-block align-top mr-1" style="max-width: 25px;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTMpucwhonneohxg2dF0oq-7BfCwAMu4Yy9fA&usqp=CAU" alt="Shards Dashboard">
+                  <span class="d-none d-md-inline ml-1">Dashboard:{{request.user.username}}</span>
+                </div>
+              </a>
+              
+            </nav>
+          </div>
+          <form action="#" class="main-sidebar__search w-100 border-right d-sm-flex d-md-none d-lg-none">
+            <div class="input-group input-group-seamless ml-3">
+              <div class="input-group-prepend">
+                <div class="input-group-text">
+                  <i class="fas fa-search"></i>
+                </div>
+              </div>
+              <input class="navbar-search form-control" type="text" placeholder="Search for something..." aria-label="Search"> </div>
+          </form>
+          <div class="nav-wrapper">
+            <ul class="nav flex-column">
+              <li class="nav-item">
+                <a class="nav-link active" href="">
+                  <i class="material-icons">vertical_split</i>
+                  <span>All Laptop Models</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link " href="{% url 'purchased' %}">
+                  <i class="material-icons">vertical_split</i>
+                  <span>Purchased Laptops</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link " href="{% url 'skip' %}">
+                  <i class="material-icons">vertical_split</i>
+                  <span>Returned Laptops</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </aside>
+        <!-- End Main Sidebar -->
+        <main class="main-content col-lg-10 col-md-9 col-sm-12 p-0 offset-lg-2 offset-md-3">
+          <div class="main-navbar sticky-top bg-white">
+            <!-- Main Navbar -->
+            <nav class="navbar align-items-stretch navbar-light flex-md-nowrap p-0">
+              <form action="#" class="main-navbar__search w-100 d-none d-md-flex d-lg-flex">
+                <div class="input-group input-group-seamless ml-3">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text">
+                      <i class="fas fa-search"></i>
+                    </div>
+                  </div>
+                  <input class="navbar-search form-control" type="text" placeholder="Search for something..." aria-label="Search"> </div>
+              </form>
+              <ul class="navbar-nav border-left flex-row ">
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle text-nowrap px-3" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                    <img class="user-avatar rounded-circle mr-2" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQuDoisN_XW3IVsEn4qXXTiqfTFBCCQOWqDFg&usqp=CAU" alt="User Avatar">
+                    <span class="d-none d-md-inline-block">{{request.user.username}}</span>
+                  </a>
+                  <div class="dropdown-menu dropdown-menu-small">
+                    <a class="dropdown-item" data-target="#info" data-toggle="modal" href="#">
+                      <i class="material-icons">&#xE7FD;</i> Profile</a> 
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item text-danger" href="{% url 'logout' %}" >
+                      <i class="material-icons text-danger">&#xE879;</i> Logout </a>
+                  </div>
+                </li>
+              </ul>
+              <nav class="nav">
+                <a href="#" class="nav-link nav-link-icon toggle-sidebar d-md-inline d-lg-none text-center border-left" data-toggle="collapse" data-target=".header-navbar" aria-expanded="false" aria-controls="header-navbar">
+                  <i class="material-icons">&#xE5D2;</i>
+                </a>
+              </nav>
+            </nav>
+          </div>
+          <!-- / .main-navbar -->
+          <div class="main-content-container container-fluid px-4">
+            <!-- Page Header -->
+            <div class="page-header row no-gutters py-4">
+              <div class="col-12 col-sm-4 text-center text-sm-left mb-0">
+                
+                <h3 class="page-title">Laptop Models Available</h3>
+                <a href="{% url 'addproductuser'%}">Add Product</a>
+                
+              </div>
+            </div>
+            <!-- End Page Header -->
+            <!-- Small Stats Blocks -->
+            <!-- End Small Stats Blocks -->
+            <div class="row">
+              <!-- Users Stats -->
+              <div class="col-lg-8 col-md-12 col-sm-12 mb-4">
+                <div class="card card-small">
+                  <div class="card-header border-bottom">
+                    <h6 class="m-0">All Laptop Brands</h6>
+                  </div>
+                  <div class="card-body pt-0">
+                    <div class="blog-comments__item d-flex p-3">
+                      <div class="blog-comments__avatar mr-3">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT0CDLsXccZ1RdYRfIOUCoMINl96qaet_CZRQ&usqp=CAU" alt="User avatar" /> </div>
+                      <div class="blog-comments__content">
+                        <div class="blog-comments__meta text-muted">
+                          <a class="text-secondary" href="#">ASUS VivoBook 14</a>
+                        </div>
+                        <div class="blog-comments__actions">
+                          <div class="btn-group btn-group-sm">
+                            <button type="button" class="btn btn-white" data-target="#login" data-toggle="modal">
+                              <span class="text-success">
+                                <i class="material-icons">check</i>
+                              </span>Register Now</button>
+							  <div id="login" class="modal fade" role="verification">
+							  <div class="modal-dialog">
+								<div class="modal-content">
+								  <div class="modal-body">
+									<button data-dismiss="modal" class="close">&times;</button>
+									<h4>Register to Return Laptop</h4>
+									<form>
+									  <input type="text" name="invoiceno" class="username form-control" placeholder="Invoice No" required />
+									  <input class="btn login" type="submit" value="Verify"/>
+									</form>
+								  </div>
+								</div>
+							  </div>  
+							</div>                          
+						  </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="blog-comments__item d-flex p-3">
+                      <div class="blog-comments__avatar mr-3">
+                        <img src="data:image/png;base64,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" alt="User avatar" /> </div>
+                      <div class="blog-comments__content">
+                        <div class="blog-comments__meta text-muted">
+                          <a class="text-secondary" href="#">HP 245 G7</a>
+                        </div>
+                        <div class="blog-comments__actions">
+                          <div class="btn-group btn-group-sm">
+							<button type="button" class="btn btn-white" data-target="#login" data-toggle="modal">
+                              <span class="text-success">
+                                <i class="material-icons">check</i>
+                              </span>Register Now</button>
+							  <div id="login" class="modal fade" role="verification">
+							  <div class="modal-dialog">
+								<div class="modal-content">
+								  <div class="modal-body">
+									<button data-dismiss="modal" class="close">&times;</button>
+									<h4>Register to Return Laptop</h4>
+									<form>
+									  <input type="text" name="invoiceno" class="username form-control" placeholder="Invoice No" required />
+									  <input class="btn login" type="submit" value="Verify"/>
+									</form>
+								  </div>
+								</div>
+							  </div>  
+							</div>                          
+						  </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="blog-comments__item d-flex p-3">
+                      <div class="blog-comments__avatar mr-3">
+                        <img src="data:image/png;base64,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" alt="User avatar" /> </div>
+                      <div class="blog-comments__content">
+                        <div class="blog-comments__meta text-muted">
+                          <a class="text-secondary" href="#">ACER PREDATOR</a>
+                        </div>
+                        <div class="blog-comments__actions">
+                          <div class="btn-group btn-group-sm">
+							<button type="button" class="btn btn-white" data-target="#login" data-toggle="modal">
+                              <span class="text-success">
+                                <i class="material-icons">check</i>
+                              </span>Register Now</button>
+							  <div id="login" class="modal fade" role="verification">
+							  <div class="modal-dialog">
+								<div class="modal-content">
+								  <div class="modal-body">
+									<button data-dismiss="modal" class="close">&times;</button>
+									<h4>Register to Return Laptop</h4>
+									<form>
+									  <input type="text" name="invoiceno" class="username form-control" placeholder="Invoice No" required />
+									  <input class="btn login" type="submit" value="Verify"/>
+									</form>
+								  </div>
+								</div>
+							  </div>  
+							</div>                          
+						  </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="blog-comments__item d-flex p-3">
+                      <div class="blog-comments__avatar mr-3">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT0CDLsXccZ1RdYRfIOUCoMINl96qaet_CZRQ&usqp=CAU" alt="User avatar" /> </div>
+                      <div class="blog-comments__content">
+                        <div class="blog-comments__meta text-muted">
+                          <a class="text-secondary" href="#">Asus ZenBook Pro Duo</a>
+                        </div>
+                        <div class="blog-comments__actions">
+                          <div class="btn-group btn-group-sm">
+                            <button type="button" class="btn btn-white" data-target="#login" data-toggle="modal">
+                              <span class="text-success">
+                                <i class="material-icons">check</i>
+                              </span>Register Now</button>
+							  <div id="login" class="modal fade" role="verification">
+							  <div class="modal-dialog">
+								<div class="modal-content">
+								  <div class="modal-body">
+									<button data-dismiss="modal" class="close">&times;</button>
+									<h4>Register to Return Laptop</h4>
+									<form>
+									  <input type="text" name="invoiceno" class="username form-control" placeholder="Invoice No" required />
+									  <input class="btn login" type="submit" value="Verify"/>
+									</form>
+								  </div>
+								</div>
+							  </div>  
+							</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="blog-comments__item d-flex p-3">
+                      <div class="blog-comments__avatar mr-3">
+                        <img src="data:image/png;base64,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" alt="User avatar" /> </div>
+                      <div class="blog-comments__content">
+                        <div class="blog-comments__meta text-muted">
+                          <a class="text-secondary" href="#">Dell Alienware x17 R1.</a>
+                        </div>
+                        <div class="blog-comments__actions">
+                          <div class="btn-group btn-group-sm">
+                            <button type="button" class="btn btn-white" data-target="#login" data-toggle="modal">
+                              <span class="text-success">
+                                <i class="material-icons">check</i>
+                              </span>Register Now</button>
+							  <div id="login" class="modal fade" role="verification">
+							  <div class="modal-dialog">
+								<div class="modal-content">
+								  <div class="modal-body">
+									<button data-dismiss="modal" class="close">&times;</button>
+									<h4>Register to Return Laptop</h4>
+									<form>
+									  <input type="text" name="invoiceno" class="username form-control" placeholder="Invoice No" required />
+									  <input class="btn login" type="submit" value="Verify"/>
+									</form>
+								  </div>
+								</div>
+							  </div>  
+							</div>                          
+						  </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="blog-comments__item d-flex p-3">
+                      <div class="blog-comments__avatar mr-3">
+                        <img src="data:image/png;base64,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" alt="User avatar" /> </div>
+                      <div class="blog-comments__content">
+                        <div class="blog-comments__meta text-muted">
+                          <a class="text-secondary" href="#">Lenovo IdeaPad Slim 5 Pro</a>
+                        </div>
+                        <div class="blog-comments__actions">
+                          <div class="btn-group btn-group-sm">
+                            <button type="button" class="btn btn-white" data-target="#login" data-toggle="modal">
+                              <span class="text-success">
+                                <i class="material-icons">check</i>
+                              </span>Register Now</button>
+							  <div id="login" class="modal fade" role="verification">
+							  <div class="modal-dialog">
+								<div class="modal-content">
+								  <div class="modal-body">
+									<button data-dismiss="modal" class="close">&times;</button>
+									<h4>Register to Return Laptop</h4>
+									<form>
+									  <input type="text" name="invoiceno" class="username form-control" placeholder="Invoice No" required />
+									  <input class="btn login" type="submit" value="Verify"/>
+									</form>
+								  </div>
+								</div>
+							  </div>  
+							</div>                          
+						 </div>
+                        </div>
+                      </div>
+                    </div>
+                    <canvas height="60" style="max-width: 100%"></canvas>
+                  </div>
+                </div>
+              </div>
+
+              <!-- End Users Stats -->
+              <!-- Users By Device Stats -->
+              <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+                <div class="card card-small h-100">
+                  <div class="card-header border-bottom">
+                    <h6 class="m-0">Products Available by Company</h6>
+                  </div>
+					<ul class="list-group list-group-small list-group-flush">
+                      <li class="list-group-item d-flex px-3">
+                        <span class="text-semibold text-fiord-blue">ASUS</span>
+                        <span class="ml-auto text-right text-semibold text-reagent-gray">19,291</span>
+                      </li>
+                      <li class="list-group-item d-flex px-3">
+                        <span class="text-semibold text-fiord-blue">DELL</span>
+                        <span class="ml-auto text-right text-semibold text-reagent-gray">11,201</span>
+                      </li>
+                      <li class="list-group-item d-flex px-3">
+                        <span class="text-semibold text-fiord-blue">ACER</span>
+                        <span class="ml-auto text-right text-semibold text-reagent-gray">9,291</span>
+                      </li>
+                      <li class="list-group-item d-flex px-3">
+                        <span class="text-semibold text-fiord-blue">HP</span>
+                        <span class="ml-auto text-right text-semibold text-reagent-gray">8,281</span>
+                      </li>
+                      <li class="list-group-item d-flex px-3">
+                        <span class="text-semibold text-fiord-blue">Lenovo</span>
+                        <span class="ml-auto text-right text-semibold text-reagent-gray">7,128</span>
+                      </li>
+                      <li class="list-group-item d-flex px-3">
+                        <span class="text-semibold text-fiord-blue">MacBook</span>
+                        <span class="ml-auto text-right text-semibold text-reagent-gray">6,218</span>
+                      </li>
+                      <li class="list-group-item d-flex px-3">
+                        <span class="text-semibold text-fiord-blue">Samsung</span>
+                        <span class="ml-auto text-right text-semibold text-reagent-gray">1,218</span>
+                      </li>
+                      <li class="list-group-item d-flex px-3">
+                        <span class="text-semibold text-fiord-blue">Mi Notebook</span>
+                        <span class="ml-auto text-right text-semibold text-reagent-gray">827</span>
+                      </li>
+                    </ul>
+                </div>
+              </div>
+              <!-- End Users By Device Stats -->
+              <!-- New Draft Component -->
+              <!-- End New Draft Component -->
+              <!-- Discussions Component -->
+              <!-- End Discussions Component -->
+              <!-- Top Referrals Component -->
+              <!-- End Top Referrals Component -->
+            </div>
+          </div>
+          <footer class="main-footer d-flex p-2 px-3 bg-white border-top">
+            <span class="copyright ml-auto my-auto mr-2">Copyright © 2021
+              <a href="https://designrevision.com" rel="nofollow">Team E-Waste Collection</a>
+            </span>
+          </footer>
+        </main>
+      </div>
+    </div>
+	<div id="info" class="modal fade" role="personal-info">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-body">
+					<button data-dismiss="modal" class="close">&times;</button>
+					<h4>Your Info</h4>
+					<form>
+						<input type="text" name="username"    class="username form-control" placeholder="Username" required />
+						<input type="text" name="oldpassword" class="username form-control" placeholder="Old Password" required />
+						<input type="text" name="newpassword" class="username form-control" placeholder="New Password" required />
+						<input class="btn login" type="submit" value="Change Info"/>
+					</form>
+				</div>
+			</div>
+		</div>  
+	</div>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
+    <script src="https://unpkg.com/shards-ui@latest/dist/js/shards.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Sharrre/2.0.1/jquery.sharrre.min.js"></script>
+    <script src="templates/scripts/extras.1.1.0.min.js"></script>
+    <script src="templates/scripts/shards-dashboards.1.1.0.min.js"></script>
+    <script src="templates/scripts/app/app-blog-overview.1.1.0.js"></script>
+  </body>
+</html>

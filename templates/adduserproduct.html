@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Add user Product</title>
+	<script src="script.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap');
+
+* {
+margin:0;
+padding: 0;
+box-sizing: border-box;
+outline: none;
+font-family: 'Josefin Sans', sans-serif;
+font-size: 100%;
+}
+
+body{
+    background-color: white;
+}
+
+.wrapper{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    max-width: 600px;
+    width: 100%;
+    background-color: white;
+    padding: 25px;
+    border-radius: 15%;
+    box-sizing: 4px 4px 2px rgba(254,236,164,1);
+	margin:15px,auto;
+}
+
+.wrapper h2{
+    text-align: center;
+    margin-bottom: 20px;
+    letter-spacing: 3px;
+	font-size: 30px;
+}
+
+.wrapper .input_field{
+    margin-bottom:15px;
+}
+
+.wrapper .input_field input[type="text"],
+.wrapper .input_field input[type="password"],
+.wrapper .input_field input[type="date"],
+.wrapper .input_field input[type="number"],
+.wrapper .input_field input[type="list"],
+.wrapper .input_field input[type="textarea"],
+.wrapper .input_field input[type="select"]{
+width: 100%;
+padding: 8px;
+}
+
+
+
+.wrapper input[type="submit"]{
+    border:0px;
+    margin-top:15px;
+    padding: 12px;
+    width: 80%;
+    background: #1BC1B9;
+    color:#332902;
+    text-transform: uppercase;
+    font-weight: 1000;
+    border-radius: 25px;
+    cursor: pointer;
+	position: absolute;
+	
+}
+
+.wrapper #error_message{
+    margin-bottom: 20px;
+    padding: 0px;
+    background: #fe8b8e;
+    text-align: center;
+    font-size: 14px;
+    transition: all 0.5s ease;
+}
+input[type=radio] {
+    border: 0px;
+    width: 8%;
+    height: 1.2em;
+}
+
+
+#success{
+    display: none;
+}
+
+.creds{
+background-color:#FFD151;
+  width:100%;
+  height:30px;
+  text-align:center;
+  padding:10px;
+  text-transform:uppercase;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+}
+
+
+    </style>
+
+</head>
+
+<body>
+	<div class="wrapper">
+		<h2 >Add User Product</h2>
+		<form   method="POST" >
+            {% csrf_token %}
+			<div class="input_field">
+                <label>Enter Product Name</label>
+				{{form.productname}}
+			</div>
+
+            <div class="input_field">
+                <label>Enter Your Product Company</label>
+                {{form.producttype}}
+                <datalist id="type">
+                    <option value="ACER">
+                    <option value="DELL">
+                    <option value="HP">
+                    <option value="SAMSUNG">
+                    <option value="LENOVA">
+                    <option value="MACBOOK">
+                    <option value="MI NOTEBOOK">
+                    <option value="ASUS">
+                </datalist>
+            </div>
+
+            <div class="input_field">
+                <label>Enter Your Product SerialNumber</label>
+                {{form.serialnumber}}
+            </div>
+
+            <div class="input_field">
+                <label>Date of Purchase(yyyy:mm:dd)</label>
+				{{form.Date_Of_Purchase}}
+			</div>
+			 
+			<input type="submit" value="Submit" >
+		</form>
+		<br>
+		<br>
+	</div>
+
+</body>
+
+</html>

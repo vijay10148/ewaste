@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Customer Details</title>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.11.3/datatables.min.css"/>
+<script>
+$(document).ready( function () {
+    $('#example').DataTable();
+} );
+</script>
+</head>
+<body>
+<div class="container">
+    <div class="row header" style="text-align:center;color:green">
+        <h3>Customer Details</h3>
+    </div>
+    <table id="example" class="table table-striped table-bordered" style="width:100%">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Local Address</th>
+                <th>City</th>
+                <th>Country</th>
+                <th>Purchase Date</th>
+                <th>Status</th>
+				<th>Reward</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Gokul Ganesh I</td>
+                <td>Plot No:4,Gayathri Street,Duraisamy Nagar,Bye Pass Road</td>
+                <td>Madurai</td>
+                <td>India</td>
+                <td>20/09/2010</td>
+                <td>Registered</td>
+				<td>Not Availabe</td>
+            </tr>
+            <tr>
+                <td>Rahul Kumar K S</td>
+                <td>29/1,Chandhra Gandhi Nagar,Ponmeni</td>
+                <td>Madurai</td>
+                <td>India</td>
+                <td>09/10/2009</td>
+                <td>Returned</td>
+				<td><input type = "text" value = "Rs.1000" size="10" required /><input type = "submit" value = "✓"/></td>
+            </tr>
+            <tr>
+                <td>Selva Sugan A</td>
+                <td>1/14,Ram Nagar 2nd Street,Bye Pass Road</td>
+                <td>Madurai</td>
+                <td>India</td>
+                <td>22/12/2012</td>
+                <td>Not Registered</td>
+				<td>Not Available</td>
+            </tr>
+            <tr>
+                <td>Hariharan S</td>
+                <td>31/11,Pasumpan Nagar,Palanganatham</td>
+                <td>Madurai</td>
+                <td>India</td>
+                <td>14/11/2015</td>
+                <td>Returned</td>
+				<td><input type = "text" value = "15% off" size="10" required /><input type = "submit" value = "✓"/></td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <th>Name</th>
+                <th>Local Address</th>
+                <th>City</th>
+                <th>Country</th>
+                <th>Purchase Date</th>
+                <th>Status</th>
+				<th>Reward</th>
+            </tr>
+        </tfoot>
+    </table>
+</div>
+</body>
+</html>

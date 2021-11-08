@@ -1,0 +1,272 @@
+{% load static %}
+<!DOCTYPE html>
+<html class="no-js h-100" lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Dashboard</title>
+    <meta name="description" content="A high-quality &amp; free Bootstrap admin dashboard template pack that comes with lots of templates and components.">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <!-- <link rel="stylesheet" id="main-stylesheet" data-version="1.1.0" href="styles/shards-dashboards.1.1.0.min.css">
+    <link rel="stylesheet" href="styles/extras.1.1.0.min.css"> -->
+    <link rel="stylesheet" id="main-stylesheet" data-version="1.1.0" href="{% static '/styles/shards-dashboards.1.1.0.min.css' %}">
+    <link rel="stylesheet" href="{% static '/styles/extras.1.1.0.min.css' %}">
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+	<style>
+	/*Modal*/
+	h4 {
+	  font-weight: bold;
+	  color: #fff;
+	}
+	.close {
+	  color: #fff;
+	  transform: scale(1.2)
+	}
+	.modal-content {
+	  font-weight: bold;
+	  background: linear-gradient(to bottom right,black,white);
+	}
+	.username, .password {
+	  border: none;
+	  border-radius: 0;
+	  box-shadow: none;
+	  border-bottom: 2px solid #eee;
+	  padding-left: 0;
+	  font-weight: normal;
+	  background: transparent;  
+	}
+	.login {
+	  padding: 6px 20px;
+	  border-radius: 20px;
+	  background: none;
+	  border: 2px solid #FAB87F;
+	  color: #FAB87F;
+	  font-weight: bold;
+	  transition: all .5s;
+	  margin-top: 1em;
+	}
+	.login:hover {
+	  background: #FAB87F;
+	  color: #fff;
+	}
+	</style>
+  </head>
+  <body class="h-100">
+    <div class="container-fluid">
+      <div class="row">
+        <!-- Main Sidebar -->
+        <aside class="main-sidebar col-12 col-md-3 col-lg-2 px-0">
+          <div class="main-navbar">
+            <nav class="navbar align-items-stretch navbar-light bg-white flex-md-nowrap border-bottom p-0">
+              <a class="navbar-brand w-100 mr-0" href="#" style="line-height: 25px;">
+                <div class="d-table m-auto">
+                  <img id="main-logo" class="d-inline-block align-top mr-1" style="max-width: 25px;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTMpucwhonneohxg2dF0oq-7BfCwAMu4Yy9fA&usqp=CAU" alt="Shards Dashboard">
+                  <span class="d-none d-md-inline ml-1">Dashboard</span>
+                </div>
+              </a>
+              
+            </nav>
+          </div>
+          <form action="#" class="main-sidebar__search w-100 border-right d-sm-flex d-md-none d-lg-none">
+            <div class="input-group input-group-seamless ml-3">
+              <div class="input-group-prepend">
+                <div class="input-group-text">
+                  <i class="fas fa-search"></i>
+                </div>
+              </div>
+              <input class="navbar-search form-control" type="text" placeholder="Search for something..." aria-label="Search"> </div>
+          </form>
+          <div class="nav-wrapper">
+            <ul class="nav flex-column">
+              <li class="nav-item">
+                <a class="nav-link " href="{% url 'login' %}">
+                  <i class="material-icons">vertical_split</i>
+                  <span>All Laptop Models</span>
+                </a>
+              </li>
+              <li class="nav-item">
+            <ul class="nav flex-column">
+              <li class="nav-item">
+                <a class="nav-link active" href="{% url 'purchased' %}">
+                  <i class="material-icons">vertical_split</i>
+                  <span>Purchased Laptops</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link " href="{% url 'skip' %}">
+                  <i class="material-icons">vertical_split</i>
+                  <span>Returned Laptops</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </aside>
+        <!-- End Main Sidebar -->
+        <main class="main-content col-lg-10 col-md-9 col-sm-12 p-0 offset-lg-2 offset-md-3">
+          <div class="main-navbar sticky-top bg-white">
+            <!-- Main Navbar -->
+            <nav class="navbar align-items-stretch navbar-light flex-md-nowrap p-0">
+              <form action="#" class="main-navbar__search w-100 d-none d-md-flex d-lg-flex">
+                <div class="input-group input-group-seamless ml-3">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text">
+                      <i class="fas fa-search"></i>
+                    </div>
+                  </div>
+                  <input class="navbar-search form-control" type="text" placeholder="Search for something..." aria-label="Search"> </div>
+              </form>
+              <ul class="navbar-nav border-left flex-row ">
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle text-nowrap px-3" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                    <img class="user-avatar rounded-circle mr-2" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQuDoisN_XW3IVsEn4qXXTiqfTFBCCQOWqDFg&usqp=CAU" alt="User Avatar">
+                    <span class="d-none d-md-inline-block">{{request.user.username}}</span>
+                  </a>
+                  <div class="dropdown-menu dropdown-menu-small">
+                    <a class="dropdown-item" data-target="#info" data-toggle="modal" href="#">
+                      <i class="material-icons">&#xE7FD;</i> Profile</a> 
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item text-danger" href="#">
+                      <i class="material-icons text-danger">&#xE879;</i> Logout </a>
+                  </div>
+                </li>
+              </ul>
+              <nav class="nav">
+                <a href="#" class="nav-link nav-link-icon toggle-sidebar d-md-inline d-lg-none text-center border-left" data-toggle="collapse" data-target=".header-navbar" aria-expanded="false" aria-controls="header-navbar">
+                  <i class="material-icons">&#xE5D2;</i>
+                </a>
+              </nav>
+            </nav>
+          </div>
+          <!-- / .main-navbar -->
+          <div class="main-content-container container-fluid px-4">
+            <!-- Page Header -->
+            <div class="page-header row no-gutters py-4">
+              <div class="col-12 col-sm-4 text-center text-sm-left mb-0">
+                <h3 class="page-title">Purchased Laptop Models:{{totalproduct}}</h3>
+              </div>
+            </div>
+            <!-- End Page Header -->
+            <!-- Small Stats Blocks -->
+            <!-- End Small Stats Blocks -->
+            <div class="row">
+              <!-- Users Stats -->
+              
+              <div class="col-lg-8 col-md-12 col-sm-12 mb-4">
+                <div class="card card-small">
+                  <div class="card-body pt-0">
+                    <div class="blog-comments__item d-flex p-3">
+                      <div class="blog-comments__avatar mr-3">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT0CDLsXccZ1RdYRfIOUCoMINl96qaet_CZRQ&usqp=CAU" alt="User avatar" /> </div>
+                      <div class="blog-comments__content">
+                        <div class="blog-comments__meta text-muted">
+                          <a class="text-secondary" href="#">ASUS VivoBook 14</a>
+                        </div>
+                        <div class="blog-comments__actions">
+                          <div class="btn-group btn-group-sm">
+							<button type="button" class="btn btn-white">
+                              <span class="text-success">
+                                <i class="material-icons">check</i>
+                              </span>Registered</button>
+                            <button type="button" class="btn btn-white" onclick="sure()">
+                              <span class="text-danger">
+                                <i class="material-icons">clear</i>
+                              </span>Cancel</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- <div class="blog-comments__item d-flex p-3">
+                      <div class="blog-comments__avatar mr-3">
+                        <img src="data:image/png;base64,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" alt="User avatar" /> </div>
+                      <div class="blog-comments__content">
+                        <div class="blog-comments__meta text-muted">
+                          <a class="text-secondary" href="#">HP 245 G7</a>
+                        </div> -->
+                        <div class="blog-comments__actions">
+                          <div class="btn-group btn-group-sm">
+							<button type="button" class="btn btn-white" data-target="#login" data-toggle="modal">
+                              <span class="text-success">
+                                <i class="material-icons">check</i>
+                              </span>Return Now</button>
+							  <div id="login" class="modal fade" role="address">
+							  <div class="modal-dialog">
+								<div class="modal-content">
+								  <div class="modal-body">
+									<button data-dismiss="modal" class="close">&times;</button>
+									<h4>Address to Fetch Your Laptop</h4>
+									<form>
+									  <input type="text" name="address" class="username form-control" placeholder="Enter Current Address..." required />
+									  <input class="btn login" type="submit" value="Send Address"/>
+									</form>
+								  </div>
+								</div>
+							  </div>  
+							</div>                             
+							<button type="button" class="btn btn-white" onclick="sure()">
+                              <span class="text-danger">
+                                <i class="material-icons">clear</i>
+                              </span> Not Interesed</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <canvas height="60" style="max-width: 100%"></canvas>
+                  </div>
+                </div>
+              </div>
+
+              <!-- End Users Stats -->
+              <!-- Users By Device Stats -->
+              <!-- End Users By Device Stats -->
+              <!-- New Draft Component -->
+              <!-- End New Draft Component -->
+              <!-- Discussions Component -->
+              <!-- End Discussions Component -->
+              <!-- Top Referrals Component -->
+              <!-- End Top Referrals Component -->
+            </div>
+          </div>
+          <footer class="main-footer d-flex p-2 px-3 bg-white border-top">
+            <span class="copyright ml-auto my-auto mr-2">Copyright © 2021
+              <a href="https://designrevision.com" rel="nofollow">Team E-Waste Collection</a>
+            </span>
+          </footer>
+        </main>
+      </div>
+    </div>
+	<div id="info" class="modal fade" role="personal-info">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-body">
+					<button data-dismiss="modal" class="close">&times;</button>
+					<h4>Your Info</h4>
+					<form>
+						<input type="text" name="username"    class="username form-control" placeholder="Username" required />
+						<input type="text" name="oldpassword" class="username form-control" placeholder="Old Password" required />
+						<input type="text" name="newpassword" class="username form-control" placeholder="New Password" required />
+						<input class="btn login" type="submit" value="Change Info"/>
+					</form>
+				</div>
+			</div>
+		</div>  
+	</div>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
+    <script src="https://unpkg.com/shards-ui@latest/dist/js/shards.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Sharrre/2.0.1/jquery.sharrre.min.js"></script>
+    <script src="scripts/extras.1.1.0.min.js"></script>
+    <script src="scripts/shards-dashboards.1.1.0.min.js"></script>
+    <script src="scripts/app/app-blog-overview.1.1.0.js"></script>
+	<script>
+	function sure() 
+	{
+	  confirm("Confirm Again");
+	}
+	</script>
+  </body>
+</html>

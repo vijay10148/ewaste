@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <title>Home</title>
+    <style>
+        * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Abel", sans-serif;
+  font-size: 10px;
+  scroll-behavior: smooth;
+}
+.wrapper {
+  width: auto;
+  height: 100vh;
+  
+  background-image: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://gdurl.com/gJJK");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  backdrop-filter: opacity(80%);
+}
+.Container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  /* border-bottom: 1px solid rgba(255, 255, 255, 0.521); */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 50px;
+}
+.logo {
+  font-family: "Abel", sans-serif;
+  font-size: 2.5rem;
+  font-weight: 600;
+  letter-spacing: 0.7rem;
+  color: white;
+  margin: 4%;
+}
+.menu {
+  display: inline-block;
+  line-height: 80px;
+}
+.menu ul {
+  list-style: none;
+  /* display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center; */
+}
+.menu ul li {
+  display: inline-block;
+}
+.menu ul li a {
+  text-decoration: none;
+  font-family: "Raleway", sans-serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: 0.1rem;
+  color: white;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  padding: 10px 15px;
+  margin: 0 5px;
+  transition: 0.5s ease;
+}
+.menu ul li a:hover {
+  border-color: white;
+}
+.menu ul li:nth-child(5) a {
+  color: #fff200;
+  border: 1px solid #fff200;
+}
+.menu ul li:nth-child(5) a:hover {
+  color: black;
+  background-color: #fff200;
+}
+.header {
+  text-align: center;
+}
+.header h1 {
+  font-family: "Raleway", sans-serif;
+  font-size: 4rem;
+  font-weight: 600;
+  letter-spacing: 0.2rem;
+  color: white;
+  padding: 45% 20px 8px;
+}
+.header p {
+  font-family: "Raleway", sans-serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: 0.2rem;
+  color: white;
+  padding: 10px 15px;
+}
+button {
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: 0.15rem;
+  color: black;
+  background-color: #fff200;
+  padding: 20px 30px;
+  margin: 50px 5px 0;
+  border: none;
+  cursor: pointer;
+}
+
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="Container">
+          <div class="nav">
+            <div class="logo">
+              Ewaste
+            </div>
+            <div class="menu">
+              <ul class="navMenu">
+                <li><a href="/">Home</a></li>
+                <li><a href="{% url 'register' %}">Registration</a></li>
+                <li><a href="#">Company</a></li>
+                <!-- <li><a href="#"></a></li> -->
+                <li><a href="login/">Login</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="header">
+            <h1>Ewaste Management Portal</h1>
+            <p>"Reuse things or lose them"</p>
+            <a href="{% url 'login' %}"><button type="button">Get Started</button></a>
+            
+          </div>
+        </div>
+      </div>
+</body>
+</html>
